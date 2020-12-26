@@ -6,5 +6,11 @@ I use it to format AoC problems to python docstrings for [my solutions repo][1].
 
 I also use it for [Daily Byte][2].
 
+## Usage:
+
+```console
+python textwrap.py path/to/file.py
+```
+
 [1]: https://github.com/tusharsadhwani/aoc2020
 [2]: https://github.com/tusharsadhwani/daily_byte
