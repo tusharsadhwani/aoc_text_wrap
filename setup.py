@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="pytextwrap",
-    version="1.0.0",
+    version="1.0.1",
     author="Tushar Sadhwani",
     author_email="tushar.sadhwani000@gmail.com",
     description="Wraps text without breaking words.",

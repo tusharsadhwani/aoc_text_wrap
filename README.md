@@ -1,8 +1,6 @@
 # pytextwrap
 
-Wraps your text files to a given width, without breaking words.
-
-It reads a text file, and wraps all text in it to a line width of 72 characters.
+Wraps your text files to a given width (defaults to 72), without breaking words.
 
 I use it to format AoC problems to python docstrings for [my solutions repo][1].
 
