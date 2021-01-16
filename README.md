@@ -1,4 +1,4 @@
-# textwrap
+# pytextwrap
 
 Wraps your text files to a given width, without breaking words.
 
@@ -11,7 +11,7 @@ I also use it for [Daily Byte][2].
 ## Installation
 
 ```console
-pip install textwrap
+pip install pytextwrap
 ```
 
 ## Usage
