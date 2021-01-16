@@ -22,13 +22,22 @@ def wrap(filename: str, linewidth: int) -> int:
             formatted_lines.append(line + '\n')
             continue
 
+        indent = 0
+        for char in line:
+            if char != ' ':
+                break
+            indent += 1
+        newline = ' ' * indent
+
         words = deque(line.split())
-        newline = ''
+
+        first_word = True
         while words:
             word = words[0]
-            if newline == '':
-                newline = word
+            if first_word:
+                newline += word
                 words.popleft()
+                first_word = False
                 continue
 
             if len(newline) + 1 + len(word) <= linewidth:
@@ -38,6 +47,7 @@ def wrap(filename: str, linewidth: int) -> int:
             else:
                 formatted_lines.append(newline + '\n')
                 newline = ''
+                first_word = True
 
         if newline:
             formatted_lines.append(newline + '\n')
