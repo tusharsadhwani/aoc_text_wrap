@@ -1,4 +1,5 @@
-"""Advent of code problem text wrapper, mainly for python docstrings"""
+"""Text wrapper and formatter"""
+import argparse
 import os
 import sys
 from collections import deque
@@ -6,13 +7,8 @@ from tempfile import NamedTemporaryFile
 from typing import List
 
 
-def main() -> int:
+def wrap(filename: str, linewidth: int) -> int:
     """Main function"""
-    if len(sys.argv) < 2:
-        print("Error: no filename provided")
-        return 1
-
-    filename = sys.argv[1]
     if not os.path.isfile(filename):
         print(f"Error: file '{filename}' not found")
         return 1
@@ -22,7 +18,7 @@ def main() -> int:
 
     formatted_lines: List[str] = []
     for line in lines:
-        if len(line) <= 72:
+        if len(line) <= linewidth:
             formatted_lines.append(line + '\n')
             continue
 
@@ -35,7 +31,7 @@ def main() -> int:
                 words.popleft()
                 continue
 
-            if len(newline) + 1 + len(word) <= 72:
+            if len(newline) + 1 + len(word) <= linewidth:
                 newline = newline + ' ' + word
                 words.popleft()
 
@@ -54,5 +50,13 @@ def main() -> int:
     return 0
 
 
-if __name__ == "__main__":
-    sys.exit(main())
+def cli() -> None:
+    """Commandline interface"""
+    parser = argparse.ArgumentParser()
+    parser.add_argument('filename', help='file name')
+    parser.add_argument('-w', '--width', metavar='N',
+                        help='line width', type=int, default=72)
+
+    args = parser.parse_args()
+
+    sys.exit(wrap(args.filename, args.width))
